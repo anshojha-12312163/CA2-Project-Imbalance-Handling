@@ -88,16 +88,40 @@ st.markdown(r"""
         max-width: 1440px;
     }
 
+    /* Global Layout & Dark Theme Enforcement */
+    .stApp {
+        background-color: #0B0F19 !important;
+        color: #F8FAFC !important;
+    }
+    [data-testid="stAppViewContainer"] {
+        background-color: #0B0F19 !important;
+        color: #F8FAFC !important;
+    }
+    header[data-testid="stHeader"] {
+        background: rgba(11, 15, 25, 0.85) !important;
+        backdrop-filter: blur(12px) !important;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.1) !important;
+    }
+    footer {
+        visibility: hidden !important;
+    }
+
+    .block-container {
+        padding-top: 1.6rem !important;
+        padding-bottom: 4rem !important;
+        max-width: 1440px !important;
+    }
+
     /* Hero Banner */
     .hero-container {
-        background: radial-gradient(circle at 10% 20%, rgba(0, 173, 181, 0.18) 0%, rgba(15, 23, 42, 0) 55%),
-                    radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.12) 0%, rgba(15, 23, 42, 0) 50%),
-                    linear-gradient(135deg, #0D1424 0%, #131E35 50%, #0A0F1D 100%);
-        border: 1px solid rgba(56, 189, 248, 0.28);
+        background: radial-gradient(circle at 12% 20%, rgba(0, 173, 181, 0.22) 0%, rgba(15, 23, 42, 0) 55%),
+                    radial-gradient(circle at 88% 80%, rgba(56, 189, 248, 0.15) 0%, rgba(15, 23, 42, 0) 50%),
+                    linear-gradient(135deg, #0E1628 0%, #131E35 50%, #0A0F1E 100%);
+        border: 1px solid rgba(56, 189, 248, 0.32);
         border-radius: 20px;
-        padding: 36px 42px;
-        margin-bottom: 26px;
-        box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        padding: 38px 44px;
+        margin-bottom: 28px;
+        box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         position: relative;
         overflow: hidden;
     }
@@ -113,7 +137,7 @@ st.markdown(r"""
         color: #38BDF8;
         border: 1px solid rgba(56, 189, 248, 0.35);
         border-radius: 20px;
-        padding: 5px 14px;
+        padding: 6px 15px;
         font-size: 0.78rem;
         font-weight: 700;
         letter-spacing: 0.06em;
@@ -131,175 +155,184 @@ st.markdown(r"""
     }
     .hero-title {
         color: #F8FAFC;
-        font-size: 2.45rem;
+        font-size: clamp(2rem, 3.2vw, 2.75rem);
         font-weight: 800;
         letter-spacing: -0.035em;
         margin: 0 0 12px 0;
-        background: linear-gradient(135deg, #FFFFFF 15%, #E0F2FE 55%, #38BDF8 100%);
+        background: linear-gradient(135deg, #FFFFFF 10%, #E0F2FE 55%, #38BDF8 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         line-height: 1.18;
     }
     .hero-subtitle {
         color: #94A3B8;
-        font-size: 1.08rem;
-        margin: 0 0 18px 0;
+        font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+        margin: 0 0 20px 0;
         font-weight: 400;
-        max-width: 980px;
-        line-height: 1.6;
+        max-width: 1020px;
+        line-height: 1.65;
     }
     .hero-meta-row {
         display: flex;
-        gap: 22px;
-        color: #64748B;
+        gap: 24px;
+        color: #7DD3FC;
         font-size: 0.88rem;
         font-weight: 500;
         flex-wrap: wrap;
-        border-top: 1px solid rgba(148, 163, 184, 0.12);
-        padding-top: 14px;
+        border-top: 1px solid rgba(148, 163, 184, 0.14);
+        padding-top: 16px;
     }
     .hero-meta-item {
         display: flex;
         align-items: center;
         gap: 6px;
+        color: #94A3B8;
+    }
+    .hero-meta-item b {
+        color: #E2E8F0;
     }
 
     /* Cards */
     .glass-card {
-        background: #131B2E;
-        border: 1px solid rgba(148, 163, 184, 0.14);
+        background: linear-gradient(180deg, #131B2E 0%, #0F1728 100%);
+        border: 1px solid rgba(148, 163, 184, 0.16);
         border-radius: 16px;
-        padding: 24px;
-        margin-bottom: 20px;
-        box-shadow: 0 6px 24px -4px rgba(0, 0, 0, 0.28);
+        padding: 26px;
+        margin-bottom: 22px;
+        box-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.35);
         transition: transform 0.2s ease, border-color 0.2s ease;
     }
     .glass-card:hover {
-        border-color: rgba(56, 189, 248, 0.35);
+        border-color: rgba(56, 189, 248, 0.4);
     }
     .card-title {
         color: #F8FAFC;
-        font-size: 1.15rem;
+        font-size: 1.18rem;
         font-weight: 700;
         letter-spacing: -0.015em;
-        margin-bottom: 16px;
+        margin-bottom: 18px;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
     }
 
     /* Gateway Nav Cards */
-    .gateway-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 16px;
-        margin-bottom: 28px;
-    }
-    @media (max-width: 1024px) {
-        .gateway-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 640px) {
-        .gateway-grid { grid-template-columns: 1fr; }
-    }
     .gateway-card {
-        background: linear-gradient(180deg, #162238 0%, #101827 100%);
-        border: 1px solid rgba(148, 163, 184, 0.16);
+        background: linear-gradient(180deg, #162238 0%, #0F172A 100%);
+        border: 1px solid rgba(148, 163, 184, 0.18);
         border-radius: 14px;
         padding: 22px;
-        box-shadow: 0 4px 18px rgba(0,0,0,0.22);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: 100%;
+        min-height: 185px;
+        margin-bottom: 10px;
         transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     }
     .gateway-card:hover {
-        transform: translateY(-4px);
+        transform: translateY(-3px);
         border-color: rgba(56, 189, 248, 0.5);
-        box-shadow: 0 8px 24px rgba(56, 189, 248, 0.15);
+        box-shadow: 0 10px 28px rgba(56, 189, 248, 0.18);
     }
     .gateway-icon {
-        font-size: 2rem;
+        font-size: 2.1rem;
         margin-bottom: 12px;
     }
     .gateway-title {
-        font-size: 1.1rem;
+        font-size: 1.12rem;
         font-weight: 700;
         color: #F8FAFC;
         margin: 0 0 6px 0;
         letter-spacing: -0.01em;
     }
     .gateway-desc {
-        font-size: 0.85rem;
+        font-size: 0.86rem;
         color: #94A3B8;
         line-height: 1.5;
-        margin: 0 0 16px 0;
+        margin: 0;
         flex-grow: 1;
+    }
+
+    /* Primary Streamlit Button Styling */
+    div[data-testid="stButton"] > button {
+        background: linear-gradient(135deg, #00ADB5 0%, #0284C7 100%) !important;
+        color: #FFFFFF !important;
+        border: none !important;
+        border-radius: 10px !important;
+        padding: 0.6rem 1.1rem !important;
+        font-weight: 700 !important;
+        font-size: 0.88rem !important;
+        letter-spacing: 0.02em !important;
+        box-shadow: 0 4px 14px rgba(0, 173, 181, 0.25) !important;
+        transition: all 0.2s ease !important;
+        width: 100% !important;
+    }
+    div[data-testid="stButton"] > button:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 24px rgba(0, 173, 181, 0.45) !important;
+        border: none !important;
+        color: #FFFFFF !important;
+    }
+    div[data-testid="stButton"] > button:active {
+        transform: translateY(0) !important;
     }
 
     /* Architecture Stepper Grid */
     .arch-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 14px;
-        margin-bottom: 24px;
-    }
-    @media (max-width: 1024px) {
-        .arch-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 640px) {
-        .arch-grid { grid-template-columns: 1fr; }
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+        margin-bottom: 28px;
     }
     .arch-card {
         background: linear-gradient(180deg, #151F33 0%, #0E1626 100%);
-        border: 1px solid rgba(148, 163, 184, 0.14);
-        border-radius: 12px;
-        padding: 18px;
+        border: 1px solid rgba(148, 163, 184, 0.16);
+        border-radius: 14px;
+        padding: 20px;
         position: relative;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.2);
     }
     .arch-step-num {
         display: inline-block;
-        width: 26px;
-        height: 26px;
-        line-height: 26px;
+        width: 28px;
+        height: 28px;
+        line-height: 28px;
         text-align: center;
-        background: rgba(56, 189, 248, 0.15);
+        background: rgba(56, 189, 248, 0.18);
         color: #38BDF8;
-        border: 1px solid rgba(56, 189, 248, 0.3);
+        border: 1px solid rgba(56, 189, 248, 0.35);
         border-radius: 50%;
-        font-size: 0.78rem;
+        font-size: 0.8rem;
         font-weight: 800;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
     }
     .arch-step-title {
         color: #F8FAFC;
-        font-size: 0.95rem;
+        font-size: 0.98rem;
         font-weight: 700;
-        margin: 0 0 6px 0;
+        margin: 0 0 8px 0;
     }
     .arch-step-desc {
         color: #94A3B8;
-        font-size: 0.82rem;
-        line-height: 1.45;
+        font-size: 0.84rem;
+        line-height: 1.5;
         margin: 0;
     }
 
     /* Key Insights Grid */
     .insight-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 16px;
-        margin-bottom: 26px;
-    }
-    @media (max-width: 900px) {
-        .insight-grid { grid-template-columns: 1fr; }
+        margin-bottom: 28px;
     }
     .insight-card {
-        background: linear-gradient(180deg, #162238 0%, #101827 100%);
-        border: 1px solid rgba(148, 163, 184, 0.14);
+        background: linear-gradient(180deg, #162238 0%, #0F1728 100%);
+        border: 1px solid rgba(148, 163, 184, 0.16);
         border-radius: 14px;
         padding: 22px;
-        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
         position: relative;
         overflow: hidden;
     }
@@ -318,15 +351,15 @@ st.markdown(r"""
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.05em;
-        padding: 3px 10px;
+        padding: 4px 10px;
         border-radius: 12px;
     }
-    .insight-badge.teal { background: rgba(0, 173, 181, 0.18); color: #38BDF8; }
-    .insight-badge.emerald { background: rgba(16, 185, 129, 0.18); color: #34D399; }
-    .insight-badge.indigo { background: rgba(129, 140, 248, 0.18); color: #A5B4FC; }
+    .insight-badge.teal { background: rgba(0, 173, 181, 0.18); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .insight-badge.emerald { background: rgba(16, 185, 129, 0.18); color: #34D399; border: 1px solid rgba(52, 211, 153, 0.3); }
+    .insight-badge.indigo { background: rgba(129, 140, 248, 0.18); color: #A5B4FC; border: 1px solid rgba(165, 180, 252, 0.3); }
 
     .insight-title {
-        font-size: 1.08rem;
+        font-size: 1.1rem;
         font-weight: 700;
         color: #F8FAFC;
         margin: 0 0 8px 0;
@@ -341,22 +374,16 @@ st.markdown(r"""
     /* Custom KPI Cards */
     .kpi-grid {
         display: grid;
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
         gap: 14px;
-        margin-bottom: 26px;
-    }
-    @media (max-width: 1024px) {
-        .kpi-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-    @media (max-width: 640px) {
-        .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+        margin-bottom: 28px;
     }
     .kpi-card {
-        background: linear-gradient(180deg, #162238 0%, #101827 100%);
-        border: 1px solid rgba(148, 163, 184, 0.15);
-        border-radius: 12px;
-        padding: 16px 18px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        background: linear-gradient(180deg, #162238 0%, #0F172A 100%);
+        border: 1px solid rgba(148, 163, 184, 0.16);
+        border-radius: 14px;
+        padding: 18px 20px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
         position: relative;
         overflow: hidden;
     }
@@ -382,19 +409,19 @@ st.markdown(r"""
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.05em;
-        margin-bottom: 6px;
+        margin-bottom: 8px;
     }
     .kpi-val {
-        font-size: 1.75rem;
+        font-size: 1.85rem;
         font-weight: 800;
         color: #F8FAFC;
-        letter-spacing: -0.02em;
+        letter-spacing: -0.025em;
         line-height: 1.1;
     }
     .kpi-sub {
         font-size: 0.8rem;
         color: #64748B;
-        margin-top: 4px;
+        margin-top: 5px;
         font-weight: 500;
     }
 
@@ -406,12 +433,12 @@ st.markdown(r"""
         box-shadow: 0 8px 24px rgba(0,0,0,0.3);
     }
     .risk-card.high {
-        background: linear-gradient(135deg, rgba(244, 63, 94, 0.15) 0%, rgba(15, 23, 42, 0.9) 100%);
-        border: 1px solid rgba(244, 63, 94, 0.4);
+        background: linear-gradient(135deg, rgba(244, 63, 94, 0.18) 0%, rgba(15, 23, 42, 0.95) 100%);
+        border: 1px solid rgba(244, 63, 94, 0.45);
     }
     .risk-card.low {
-        background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(15, 23, 42, 0.9) 100%);
-        border: 1px solid rgba(16, 185, 129, 0.4);
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.18) 0%, rgba(15, 23, 42, 0.95) 100%);
+        border: 1px solid rgba(16, 185, 129, 0.45);
     }
     .risk-badge {
         display: inline-block;
@@ -439,7 +466,7 @@ st.markdown(r"""
         background: rgba(30, 41, 59, 0.7);
         border: 1px solid rgba(148, 163, 184, 0.18);
         border-left: 4px solid #F59E0B;
-        border-radius: 8px;
+        border-radius: 10px;
         padding: 14px 18px;
         color: #CBD5E1;
         font-size: 0.88rem;
@@ -449,32 +476,74 @@ st.markdown(r"""
 
     /* Sidebar polish */
     [data-testid="stSidebar"] {
-        background-color: #0B0F19;
-        border-right: 1px solid rgba(148, 163, 184, 0.1);
+        background-color: #0B101E !important;
+        border-right: 1px solid rgba(148, 163, 184, 0.12) !important;
     }
     .sidebar-brand {
         padding: 10px 0 20px 0;
-        border-bottom: 1px solid rgba(148, 163, 184, 0.1);
-        margin-bottom: 16px;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+        margin-bottom: 18px;
     }
     .sidebar-brand h2 {
-        font-size: 1.25rem;
+        font-size: 1.3rem;
         font-weight: 800;
         color: #F8FAFC;
         margin: 0;
         letter-spacing: -0.02em;
     }
     .sidebar-brand p {
-        font-size: 0.78rem;
+        font-size: 0.8rem;
         color: #64748B;
         margin: 4px 0 0 0;
     }
 
-    /* Dataframe formatting */
-    [data-testid="stDataFrame"] {
-        border-radius: 10px;
+    /* Inputs, Selectboxes, Radios */
+    div[data-baseweb="select"] > div {
+        background-color: #151F33 !important;
+        color: #F8FAFC !important;
+        border-color: rgba(148, 163, 184, 0.25) !important;
+        border-radius: 8px !important;
+    }
+    div[data-baseweb="popover"], div[data-baseweb="menu"] {
+        background-color: #151F33 !important;
+        color: #F8FAFC !important;
+    }
+    div[data-baseweb="menu"] * {
+        color: #F8FAFC !important;
+    }
+    div[data-baseweb="select"] span {
+        color: #F8FAFC !important;
+    }
+
+    /* Radio buttons */
+    div[data-testid="stRadio"] label {
+        color: #CBD5E1 !important;
+        font-weight: 500 !important;
+    }
+    div[data-testid="stRadio"] div[role="radiogroup"] > label {
+        background-color: rgba(22, 34, 56, 0.6) !important;
+        border: 1px solid rgba(148, 163, 184, 0.14) !important;
+        border-radius: 8px !important;
+        padding: 8px 14px !important;
+        margin-bottom: 6px !important;
+        transition: all 0.2s ease !important;
+    }
+    div[data-testid="stRadio"] div[role="radiogroup"] > label:hover {
+        border-color: rgba(56, 189, 248, 0.4) !important;
+        background-color: rgba(22, 34, 56, 0.95) !important;
+    }
+
+    /* Expanders & DataFrames */
+    div[data-testid="stExpander"] {
+        background-color: #131B2E !important;
+        border: 1px solid rgba(148, 163, 184, 0.18) !important;
+        border-radius: 12px !important;
+    }
+    [data-testid="stDataFrame"], [data-testid="stTable"] {
+        background-color: #131B2E !important;
+        border-radius: 12px !important;
         overflow: hidden;
-        border: 1px solid rgba(148, 163, 184, 0.15);
+        border: 1px solid rgba(148, 163, 184, 0.16) !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -810,27 +879,70 @@ def render_overview():
     best_df = load_best_methods()
     if best_df is not None:
         st.markdown('<div class="glass-card"><div class="card-title">🏆 Benchmark Champion Strategies at a Glance</div>', unsafe_allow_html=True)
-        st.markdown("<p style='color:#94A3B8; font-size:0.88rem; margin-top:-8px; margin-bottom:14px;'>Top performing strategy selected by Balanced Accuracy across 20 Monte Carlo iterations for each model and training size.</p>", unsafe_allow_html=True)
+        st.markdown("<p style='color:#94A3B8; font-size:0.88rem; margin-top:-8px; margin-bottom:16px;'>Top performing strategy selected by Balanced Accuracy across 20 Monte Carlo iterations for each model and training size.</p>", unsafe_allow_html=True)
         
         c_rf, c_lr = st.columns(2, gap="medium")
         
+        def build_champs_table(subset_df, accent_color):
+            rows_html = ""
+            for _, r in subset_df.iterrows():
+                sz = r["Cohort Size (N)"]
+                meth = r["Champion Strategy"]
+                ba = r["Balanced Accuracy"]
+                rec = r["Minority Recall"]
+                
+                if "Under" in meth:
+                    b_bg, b_col, b_brd = "rgba(16, 185, 129, 0.18)", "#34D399", "rgba(52, 211, 153, 0.35)"
+                elif "Weight" in meth:
+                    b_bg, b_col, b_brd = "rgba(56, 189, 248, 0.18)", "#38BDF8", "rgba(56, 189, 248, 0.35)"
+                else:
+                    b_bg, b_col, b_brd = "rgba(129, 140, 248, 0.18)", "#A5B4FC", "rgba(129, 140, 248, 0.35)"
+                
+                rows_html += f"""
+                <tr style="border-bottom: 1px solid rgba(148, 163, 184, 0.1);">
+                    <td style="padding: 10px 14px; font-weight: 600; color: #F1F5F9; font-size: 0.88rem;">{sz}</td>
+                    <td style="padding: 10px 14px;">
+                        <span style="background:{b_bg}; color:{b_col}; border:1px solid {b_brd}; padding:3px 10px; border-radius:12px; font-weight:700; font-size:0.78rem;">
+                            {meth}
+                        </span>
+                    </td>
+                    <td style="padding: 10px 14px; font-weight: 700; color: {accent_color}; font-size: 0.92rem;">{ba}</td>
+                    <td style="padding: 10px 14px; font-weight: 600; color: #F8FAFC; font-size: 0.88rem;">{rec}</td>
+                </tr>
+                """
+            return f"""
+            <table style="width:100%; border-collapse:collapse; background:rgba(15, 23, 42, 0.5); border-radius:10px; overflow:hidden; border: 1px solid rgba(148, 163, 184, 0.12);">
+                <thead>
+                    <tr style="background:rgba(30, 41, 59, 0.7); color:#94A3B8; font-size:0.74rem; text-transform:uppercase; letter-spacing:0.05em; text-align:left;">
+                        <th style="padding:10px 14px;">Cohort Size</th>
+                        <th style="padding:10px 14px;">Champion Strategy</th>
+                        <th style="padding:10px 14px;">Balanced Acc</th>
+                        <th style="padding:10px 14px;">Minority Recall</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {rows_html}
+                </tbody>
+            </table>
+            """
+
         with c_rf:
-            st.markdown("<div style='font-size:0.95rem; font-weight:700; color:#34D399; margin-bottom:8px;'>🌲 Random Forest (Ensemble)</div>", unsafe_allow_html=True)
+            st.markdown("<div style='font-size:0.98rem; font-weight:700; color:#34D399; margin-bottom:10px;'>🌲 Random Forest (Ensemble)</div>", unsafe_allow_html=True)
             rf_champs = best_df[best_df["model"] == "RandomForest"][["train_size", "method", "BA", "MinorityRecall"]].copy()
             rf_champs.columns = ["Cohort Size (N)", "Champion Strategy", "Balanced Accuracy", "Minority Recall"]
             rf_champs["Cohort Size (N)"] = rf_champs["Cohort Size (N)"].apply(lambda s: f"N = {s}" if s != 537 else "Full (N = 537)")
             rf_champs["Balanced Accuracy"] = rf_champs["Balanced Accuracy"].apply(lambda v: f"{v*100:.1f}%")
             rf_champs["Minority Recall"] = rf_champs["Minority Recall"].apply(lambda v: f"{v*100:.1f}%")
-            st.dataframe(rf_champs, use_container_width=True, hide_index=True)
+            st.markdown(build_champs_table(rf_champs, "#34D399"), unsafe_allow_html=True)
             
         with c_lr:
-            st.markdown("<div style='font-size:0.95rem; font-weight:700; color:#38BDF8; margin-bottom:8px;'>📈 Logistic Regression (Linear)</div>", unsafe_allow_html=True)
+            st.markdown("<div style='font-size:0.98rem; font-weight:700; color:#38BDF8; margin-bottom:10px;'>📈 Logistic Regression (Linear)</div>", unsafe_allow_html=True)
             lr_champs = best_df[best_df["model"] == "LogReg"][["train_size", "method", "BA", "MinorityRecall"]].copy()
             lr_champs.columns = ["Cohort Size (N)", "Champion Strategy", "Balanced Accuracy", "Minority Recall"]
             lr_champs["Cohort Size (N)"] = lr_champs["Cohort Size (N)"].apply(lambda s: f"N = {s}" if s != 537 else "Full (N = 537)")
             lr_champs["Balanced Accuracy"] = lr_champs["Balanced Accuracy"].apply(lambda v: f"{v*100:.1f}%")
             lr_champs["Minority Recall"] = lr_champs["Minority Recall"].apply(lambda v: f"{v*100:.1f}%")
-            st.dataframe(lr_champs, use_container_width=True, hide_index=True)
+            st.markdown(build_champs_table(lr_champs, "#38BDF8"), unsafe_allow_html=True)
 
         st.markdown('</div>', unsafe_allow_html=True)
 
@@ -872,17 +984,42 @@ def render_overview():
 
     with col_desc:
         st.markdown('<div class="glass-card"><div class="card-title">🔬 Clinical Covariates & Missingness Pipeline</div>', unsafe_allow_html=True)
-        covariates_info = pd.DataFrame([
-            {"Biomarker": "Glucose", "Type": "Continuous", "Clinical Normal": "70 - 99 mg/dL", "Physiological Missingness": "Zeros treated as NaN → Median imputed"},
-            {"Biomarker": "BloodPressure", "Type": "Continuous", "Clinical Normal": "60 - 80 mm Hg", "Physiological Missingness": "Zeros treated as NaN → Median imputed"},
-            {"Biomarker": "SkinThickness", "Type": "Continuous", "Clinical Normal": "10 - 30 mm", "Physiological Missingness": "Zeros treated as NaN → Median imputed"},
-            {"Biomarker": "Insulin", "Type": "Continuous", "Clinical Normal": "16 - 166 mu U/ml", "Physiological Missingness": "Zeros treated as NaN → Median imputed"},
-            {"Biomarker": "BMI", "Type": "Continuous", "Clinical Normal": "18.5 - 24.9 kg/m²", "Physiological Missingness": "Zeros treated as NaN → Median imputed"},
-            {"Biomarker": "Pregnancies", "Type": "Discrete", "Clinical Normal": "0 - 17 count", "Physiological Missingness": "Valid biological zero preserved"},
-            {"Biomarker": "Age", "Type": "Discrete", "Clinical Normal": "21 - 81 years", "Physiological Missingness": "Valid chronological zero preserved"},
-            {"Biomarker": "DiabetesPedigree", "Type": "Continuous", "Clinical Normal": "0.08 - 2.42 score", "Physiological Missingness": "Valid genetic risk metric"},
-        ])
-        st.dataframe(covariates_info, use_container_width=True, hide_index=True)
+        covariates_info = [
+            ("Glucose", "Continuous", "70 - 99 mg/dL", "Zeros treated as NaN → Median imputed"),
+            ("BloodPressure", "Continuous", "60 - 80 mm Hg", "Zeros treated as NaN → Median imputed"),
+            ("SkinThickness", "Continuous", "10 - 30 mm", "Zeros treated as NaN → Median imputed"),
+            ("Insulin", "Continuous", "16 - 166 mu U/ml", "Zeros treated as NaN → Median imputed"),
+            ("BMI", "Continuous", "18.5 - 24.9 kg/m²", "Zeros treated as NaN → Median imputed"),
+            ("Pregnancies", "Discrete", "0 - 17 count", "Valid biological zero preserved"),
+            ("Age", "Discrete", "21 - 81 years", "Valid chronological zero preserved"),
+            ("DiabetesPedigree", "Continuous", "0.08 - 2.42 score", "Valid genetic risk metric"),
+        ]
+        cov_rows_html = ""
+        for bio, typ, norm, miss in covariates_info:
+            cov_rows_html += f"""
+            <tr style="border-bottom: 1px solid rgba(148, 163, 184, 0.1);">
+                <td style="padding: 7px 10px; font-weight: 700; color: #F8FAFC; font-size: 0.84rem;">{bio}</td>
+                <td style="padding: 7px 10px; color: #94A3B8; font-size: 0.8rem;">{typ}</td>
+                <td style="padding: 7px 10px; color: #38BDF8; font-family:'JetBrains Mono',monospace; font-size: 0.8rem;">{norm}</td>
+                <td style="padding: 7px 10px; color: #CBD5E1; font-size: 0.8rem;">{miss}</td>
+            </tr>
+            """
+        cov_table_html = f"""
+        <table style="width:100%; border-collapse:collapse; background:rgba(15, 23, 42, 0.5); border-radius:10px; overflow:hidden; border: 1px solid rgba(148, 163, 184, 0.12);">
+            <thead>
+                <tr style="background:rgba(30, 41, 59, 0.7); color:#94A3B8; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em; text-align:left;">
+                    <th style="padding:8px 10px;">Biomarker</th>
+                    <th style="padding:8px 10px;">Type</th>
+                    <th style="padding:8px 10px;">Clinical Normal</th>
+                    <th style="padding:8px 10px;">Missingness Treatment</th>
+                </tr>
+            </thead>
+            <tbody>
+                {cov_rows_html}
+            </tbody>
+        </table>
+        """
+        st.markdown(cov_table_html, unsafe_allow_html=True)
         st.markdown('</div>', unsafe_allow_html=True)
 
     with st.expander("🔍 Interactive Cohort Data Explorer (First 50 Patient Encounters)"):
