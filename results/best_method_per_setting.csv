@@ -1,0 +1,9 @@
+model,train_size,method,BA,F1,GM,MinorityRecall
+LogReg,60,ClassWeight,0.713,0.708,0.707,0.649
+LogReg,120,ClassWeight,0.718,0.713,0.715,0.667
+LogReg,250,ClassWeight,0.724,0.717,0.722,0.684
+LogReg,537,RandomOver,0.735,0.728,0.733,0.696
+RandomForest,60,RandomUnder,0.706,0.688,0.702,0.72
+RandomForest,120,RandomUnder,0.711,0.696,0.709,0.717
+RandomForest,250,RandomUnder,0.726,0.71,0.725,0.736
+RandomForest,537,RandomUnder,0.747,0.733,0.747,0.753
