@@ -74,7 +74,8 @@ METRIC_MAP = {
 }
 
 # ----------------- CUSTOM CSS DESIGN SYSTEM -----------------
-st.markdown(r"""
+def inject_custom_css():
+    st.markdown(r"""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
@@ -583,9 +584,6 @@ st.markdown(r"""
         margin: 4px 0 0 0;
     }
 
-    /* Dataframe formatting */
-    [data-testid="stDataFrame"] {
-        border-radius: 10px;
     /* Inputs, Selectboxes, Radios */
     div[data-baseweb="select"] > div {
         background-color: #151F33 !important;
@@ -637,6 +635,8 @@ st.markdown(r"""
     }
 </style>
 """, unsafe_allow_html=True)
+
+inject_custom_css()
 
 
 # ----------------- CACHED DATA LOADERS -----------------
@@ -764,22 +764,22 @@ def style_plotly(fig):
 # ----------------- HERO HEADER -----------------
 def render_hero():
     st.markdown(r"""
-    <div class="hero-container">
-        <div class="hero-badge-row">
-            <span class="hero-badge"><span class="pulse-dot"></span> Clinical AI Benchmark</span>
-            <span class="hero-badge" style="background: rgba(16, 185, 129, 0.15); color: #34D399; border-color: rgba(16, 185, 129, 0.3);">Leakage-Free Pipeline</span>
-            <span class="hero-badge" style="background: rgba(129, 140, 248, 0.15); color: #A5B4FC; border-color: rgba(129, 140, 248, 0.3);">20× Monte Carlo</span>
-            <span class="hero-badge" style="background: rgba(244, 63, 94, 0.12); color: #FDA4AF; border-color: rgba(244, 63, 94, 0.3);">6 Resampling Strategies</span>
+    <div class="hero-container" style="background: radial-gradient(circle at 12% 20%, rgba(0, 173, 181, 0.22) 0%, rgba(15, 23, 42, 0) 55%), radial-gradient(circle at 88% 80%, rgba(56, 189, 248, 0.15) 0%, rgba(15, 23, 42, 0) 50%), linear-gradient(135deg, #0E1628 0%, #131E35 50%, #0A0F1E 100%); border: 1px solid rgba(56, 189, 248, 0.32); border-radius: 20px; padding: 34px 40px; margin-bottom: 26px; box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1); position: relative; overflow: hidden;">
+        <div class="hero-badge-row" style="display: flex; gap: 10px; margin-bottom: 16px; align-items: center; flex-wrap: wrap;">
+            <span class="hero-badge" style="background: rgba(0, 173, 181, 0.16); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 20px; padding: 5px 14px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 7px;"><span class="pulse-dot" style="width: 8px; height: 8px; border-radius: 50%; background-color: #34D399; box-shadow: 0 0 10px #34D399; display: inline-block;"></span> Clinical AI Benchmark</span>
+            <span class="hero-badge" style="background: rgba(16, 185, 129, 0.15); color: #34D399; border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 20px; padding: 5px 14px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;">Leakage-Free Pipeline</span>
+            <span class="hero-badge" style="background: rgba(129, 140, 248, 0.15); color: #A5B4FC; border: 1px solid rgba(129, 140, 248, 0.3); border-radius: 20px; padding: 5px 14px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;">20× Monte Carlo Validated</span>
+            <span class="hero-badge" style="background: rgba(244, 63, 94, 0.12); color: #FDA4AF; border: 1px solid rgba(244, 63, 94, 0.3); border-radius: 20px; padding: 5px 14px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;">6 Resampling Strategies</span>
         </div>
-        <h1 class="hero-title">Imbalance-Handling Strategies<br>on Small Imbalanced Medical Data</h1>
-        <p class="hero-subtitle">
-            A comprehensive empirical benchmark evaluating algorithmic cost-weighting and synthetic resampling under acute sample scarcity (N = 60 to 537) on the <b style="color:#E2E8F0;">Pima Indians Diabetes</b> diagnostic cohort with rigorous zero data-leakage methodology.
+        <h1 class="hero-title" style="color: #F8FAFC; font-size: 2.35rem; font-weight: 800; letter-spacing: -0.035em; margin: 0 0 12px 0; line-height: 1.2;">Imbalance-Handling Strategies<br><span style="background: linear-gradient(135deg, #FFFFFF 10%, #E0F2FE 55%, #38BDF8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">on Small Imbalanced Medical Data</span></h1>
+        <p class="hero-subtitle" style="color: #94A3B8; font-size: 1.05rem; margin: 0 0 20px 0; font-weight: 400; max-width: 1040px; line-height: 1.6;">
+            A rigorous empirical research benchmark evaluating algorithmic cost-weighting and synthetic resampling under acute sample scarcity (N = 60 to 537) on the <b style="color: #F8FAFC;">Pima Indians Diabetes</b> diagnostic cohort with zero-leakage cross-validation.
         </p>
-        <div class="hero-meta-row">
-            <span class="hero-meta-item">📁 <b>Cohort:</b> UCI / NIDDK (768 Patients)</span>
-            <span class="hero-meta-item">🧬 <b>Features:</b> 8 Physiological Biomarkers</span>
-            <span class="hero-meta-item">⚖️ <b>Class Ratio:</b> 1 : 1.87 (34.9% Diabetic)</span>
-            <span class="hero-meta-item">🔬 <b>Pipeline:</b> Impute → Scale → Resample → Classify</span>
+        <div class="hero-meta-row" style="display: flex; gap: 24px; color: #7DD3FC; font-size: 0.88rem; font-weight: 500; flex-wrap: wrap; border-top: 1px solid rgba(148, 163, 184, 0.14); padding-top: 16px;">
+            <span class="hero-meta-item" style="color: #94A3B8;">📁 <b style="color: #E2E8F0;">Cohort:</b> UCI / NIDDK (768 Patients)</span>
+            <span class="hero-meta-item" style="color: #94A3B8;">🧬 <b style="color: #E2E8F0;">Features:</b> 8 Physiological Biomarkers</span>
+            <span class="hero-meta-item" style="color: #94A3B8;">⚖️ <b style="color: #E2E8F0;">Class Ratio:</b> 1 : 1.87 (34.9% Diabetic)</span>
+            <span class="hero-meta-item" style="color: #94A3B8;">🔬 <b style="color: #E2E8F0;">Pipeline:</b> Median Impute → Robust Scaler → Resampler → Estimator</span>
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -804,167 +804,103 @@ def render_overview():
     neg_pct = 100 - pos_pct
     n_total_runs = len(all_runs) if all_runs is not None else 960
 
-    # Custom HTML KPI Grid
-    st.markdown(f"""
-    <div class="kpi-grid">
-        <div class="kpi-card teal">
-            <div class="kpi-label">Cohort Size</div>
-            <div class="kpi-val">{n_rows:,}</div>
-            <div class="kpi-sub">Adult Female Patients</div>
-        </div>
-        <div class="kpi-card blue">
-            <div class="kpi-label">Biomarkers</div>
-            <div class="kpi-val">{n_features}</div>
-            <div class="kpi-sub">Clinical Covariates</div>
-        </div>
-        <div class="kpi-card emerald">
-            <div class="kpi-label">Negative (0)</div>
-            <div class="kpi-val">{neg_count}</div>
-            <div class="kpi-sub">{neg_pct:.1f}% Non-Diabetic</div>
-        </div>
-        <div class="kpi-card rose">
-            <div class="kpi-label">Positive (1)</div>
-            <div class="kpi-val">{pos_count}</div>
-            <div class="kpi-sub">{pos_pct:.1f}% Diabetic Cases</div>
-        </div>
-        <div class="kpi-card indigo">
-            <div class="kpi-label">Strategies</div>
-            <div class="kpi-val">6</div>
-            <div class="kpi-sub">Algorithmic & Resampling</div>
-        </div>
-        <div class="kpi-card amber">
-            <div class="kpi-label">Evaluations</div>
-            <div class="kpi-val">{n_total_runs:,}</div>
-            <div class="kpi-sub">20 Repeats × 4 Sizes</div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    # 6 Cohort KPI Metric Cards
+    k1, k2, k3, k4, k5, k6 = st.columns(6)
+    kpis = [
+        (k1, "Cohort Size", f"{n_rows:,}", "Adult Female Patients", "#00ADB5"),
+        (k2, "Biomarkers", f"{n_features}", "Clinical Covariates", "#38BDF8"),
+        (k3, "Negative (0)", f"{neg_count:,}", f"{neg_pct:.1f}% Non-Diabetic", "#10B981"),
+        (k4, "Positive (1)", f"{pos_count:,}", f"{pos_pct:.1f}% Diabetic Cases", "#F43F5E"),
+        (k5, "Strategies", "6", "Algorithmic & Resampling", "#818CF8"),
+        (k6, "Evaluations", f"{n_total_runs:,}", "20 Repeats × 4 Sizes", "#FBBF24"),
+    ]
+    for col, label, val, sub, color in kpis:
+        with col:
+            st.markdown(f"""
+            <div style="background: linear-gradient(180deg, #162238 0%, #0F172A 100%); border: 1px solid rgba(148, 163, 184, 0.16); border-top: 3px solid {color}; border-radius: 14px; padding: 18px 16px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22); margin-bottom: 22px;">
+                <div style="font-size: 0.72rem; color: #94A3B8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">{label}</div>
+                <div style="font-size: 1.85rem; font-weight: 800; color: #F8FAFC; line-height: 1.1; letter-spacing: -0.02em;">{val}</div>
+                <div style="font-size: 0.78rem; color: #64748B; margin-top: 5px; font-weight: 500;">{sub}</div>
+            </div>
+            """, unsafe_allow_html=True)
 
     # 4 Interactive Gateway Cards
-    st.markdown('<div class="card-title">🚀 Interactive Research Modules</div>', unsafe_allow_html=True)
+    st.markdown('<div class="card-title" style="color: #F8FAFC; font-size: 1.18rem; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">🚀 Interactive Research Modules</div>', unsafe_allow_html=True)
     g1, g2, g3, g4 = st.columns(4)
 
-    with g1:
-        st.markdown("""
-        <div class="gateway-card">
-            <div>
-                <div class="gateway-icon">📊</div>
-                <div class="gateway-title">Results Explorer</div>
-                <div class="gateway-desc">Analyze performance scaling curves, error-bars, and top metrics as training size shrinks.</div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-        if st.button("Launch Explorer →", key="btn_g1", use_container_width=True):
-            st.session_state["main_nav_radio"] = "🔍 Results Explorer"
-            st.rerun()
+    gateways = [
+        (g1, "📊", "Results Explorer", "Analyze performance scaling curves, error-bars, and top metrics as training size shrinks.", "btn_g1", "🔍 Results Explorer", "Launch Explorer →"),
+        (g2, "⚖️", "Method Matrix", "Explore Method × Size heatmaps and inspect variance distributions over 20 Monte Carlo splits.", "btn_g2", "⚖️ Method Comparison", "Open Comparison →"),
+        (g3, "📈", "Statistical Tests", "Review paired Wilcoxon signed-rank significance tests (p < 0.05) and percentage point gains.", "btn_g3", "📈 Statistical Tests", "View Significance →"),
+        (g4, "🩺", "Live Predictor", "Interactive patient risk simulator using calibrated top-performing Random Forest pipeline.", "btn_g4", "🩺 Live Predictor", "Run Simulator →"),
+    ]
 
-    with g2:
-        st.markdown("""
-        <div class="gateway-card">
-            <div>
-                <div class="gateway-icon">⚖️</div>
-                <div class="gateway-title">Method Matrix</div>
-                <div class="gateway-desc">Explore Method × Size heatmaps and inspect variance distributions over 20 Monte Carlo splits.</div>
+    for col, icon, title, desc, btn_key, nav_target, btn_label in gateways:
+        with col:
+            st.markdown(f"""
+            <div style="background: linear-gradient(180deg, #162238 0%, #0F172A 100%); border: 1px solid rgba(148, 163, 184, 0.18); border-radius: 14px; padding: 22px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); min-height: 165px; display: flex; flex-direction: column; justify-content: space-between; margin-bottom: 12px;">
+                <div>
+                    <div style="font-size: 1.75rem; margin-bottom: 10px;">{icon}</div>
+                    <div style="color: #F8FAFC; font-size: 1.05rem; font-weight: 700; margin-bottom: 6px;">{title}</div>
+                    <div style="color: #94A3B8; font-size: 0.82rem; line-height: 1.5;">{desc}</div>
+                </div>
             </div>
-        </div>
-        """, unsafe_allow_html=True)
-        if st.button("Open Comparison →", key="btn_g2", use_container_width=True):
-            st.session_state["main_nav_radio"] = "⚖️ Method Comparison"
-            st.rerun()
-
-    with g3:
-        st.markdown("""
-        <div class="gateway-card">
-            <div>
-                <div class="gateway-icon">📈</div>
-                <div class="gateway-title">Statistical Tests</div>
-                <div class="gateway-desc">Review paired Wilcoxon signed-rank significance tests (p < 0.05) and percentage point gains.</div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-        if st.button("View Significance →", key="btn_g3", use_container_width=True):
-            st.session_state["main_nav_radio"] = "📈 Statistical Tests"
-            st.rerun()
-
-    with g4:
-        st.markdown("""
-        <div class="gateway-card">
-            <div>
-                <div class="gateway-icon">🩺</div>
-                <div class="gateway-title">Live Predictor</div>
-                <div class="gateway-desc">Interactive patient risk simulator using the calibrated top-performing Random Forest pipeline.</div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-        if st.button("Run Simulator →", key="btn_g4", use_container_width=True):
-            st.session_state["main_nav_radio"] = "🩺 Live Predictor"
-            st.rerun()
+            """, unsafe_allow_html=True)
+            if st.button(btn_label, key=btn_key, use_container_width=True):
+                st.session_state["main_nav_radio"] = nav_target
+                st.rerun()
 
     st.write("")
 
-    # Experimental Methodology Architecture
-    st.markdown('<div class="card-title">🛡️ Rigorous Zero-Leakage Pipeline Architecture</div>', unsafe_allow_html=True)
-    st.markdown("""
-    <div class="arch-grid">
-        <div class="arch-card">
-            <span class="arch-step-num">01</span>
-            <div class="arch-step-title">Clinical Cohort Ingestion</div>
-            <p class="arch-step-desc">UCI / NIDDK Pima dataset (768 adult female patients, 8 clinical features, 34.9% diabetic positive prevalence).</p>
-        </div>
-        <div class="arch-card">
-            <span class="arch-step-num">02</span>
-            <div class="arch-step-title">Physiological Sanitization</div>
-            <p class="arch-step-desc">Biologically impossible 0s in Glucose, BP, Skin, Insulin, and BMI converted to NaN; imputed via training fold median.</p>
-        </div>
-        <div class="arch-card">
-            <span class="arch-step-num">03</span>
-            <div class="arch-step-title">Nested Monte Carlo Splits</div>
-            <p class="arch-step-desc">20 independent stratified train/test partitions evaluated across 4 acute sample sizes: N ∈ {60, 120, 250, 537}.</p>
-        </div>
-        <div class="arch-card">
-            <span class="arch-step-num">04</span>
-            <div class="arch-step-title">In-Pipeline Resampling</div>
-            <p class="arch-step-desc">Resamplers and scalers execute exclusively inside <code>imblearn.pipeline.Pipeline</code> during fit to eliminate test leakage.</p>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    # Experimental Methodology Architecture (4 Columns)
+    st.markdown('<div class="card-title" style="color: #F8FAFC; font-size: 1.18rem; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">🛡️ Rigorous Zero-Leakage Pipeline Architecture</div>', unsafe_allow_html=True)
+    a1, a2, a3, a4 = st.columns(4)
+
+    arch_steps = [
+        (a1, "01", "Clinical Cohort Ingestion", "UCI / NIDDK Pima dataset (768 adult female patients, 8 clinical features, 34.9% diabetic positive prevalence)."),
+        (a2, "02", "Physiological Sanitization", "Biologically impossible 0s in Glucose, BP, Skin, Insulin, and BMI converted to NaN; imputed via training fold median."),
+        (a3, "03", "Nested Monte Carlo Splits", "20 independent stratified train/test partitions evaluated across 4 acute sample sizes: N = 60, 120, 250, 537."),
+        (a4, "04", "In-Pipeline Resampling", "Resamplers and scalers execute exclusively inside <code>imblearn.pipeline.Pipeline</code> during fit to eliminate test leakage."),
+    ]
+
+    for col, step_num, step_title, step_desc in arch_steps:
+        with col:
+            st.markdown(f"""
+            <div style="background: linear-gradient(180deg, #131B2E 0%, #0E1628 100%); border: 1px solid rgba(148, 163, 184, 0.14); border-radius: 14px; padding: 22px; margin-bottom: 22px; box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22); min-height: 175px;">
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; font-weight: 700; color: #38BDF8; background: rgba(56, 189, 248, 0.12); border-radius: 6px; padding: 3px 8px; display: inline-block; margin-bottom: 10px;">{step_num}</div>
+                <div style="color: #F8FAFC; font-size: 0.98rem; font-weight: 700; margin-bottom: 6px;">{step_title}</div>
+                <div style="color: #94A3B8; font-size: 0.82rem; line-height: 1.5;">{step_desc}</div>
+            </div>
+            """, unsafe_allow_html=True)
 
     # 3 Key Research Takeaways Cards
-    st.markdown('<div class="card-title">💡 Core Empirical Findings & Breakthroughs</div>', unsafe_allow_html=True)
-    st.markdown("""
-    <div class="insight-grid">
-        <div class="insight-card emerald">
-            <div class="insight-header">
-                <span style="font-size: 1.25rem;">🌲</span>
-                <span class="insight-badge emerald">Major Breakthrough</span>
+    st.markdown('<div class="card-title" style="color: #F8FAFC; font-size: 1.18rem; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">💡 Core Empirical Findings & Breakthroughs</div>', unsafe_allow_html=True)
+    i1, i2, i3 = st.columns(3)
+
+    insights = [
+        (i1, "🌲", "Major Breakthrough", "#10B981", "rgba(16, 185, 129, 0.15)", "#34D399",
+         "Random Under-Sampling Dominates Random Forest",
+         "For Random Forest, <b>RandomUnder</b> was the overall top strategy across all cohort sizes, lifting Balanced Accuracy by <b>+6.49 pp</b> and doubling minority diabetic detection (Recall: 36.3% → <b>72.0%</b> at N=60, <i>p < 0.0001</i>)."),
+        (i2, "⚖️", "Optimal Linear Strategy", "#00ADB5", "rgba(0, 173, 181, 0.15)", "#38BDF8",
+         "Cost-Sensitive ClassWeight Leads Logistic Regression",
+         "For Logistic Regression, algorithmic <b>ClassWeight</b> achieves the highest Balanced Accuracy at N=60 (<b>0.713 ± 0.035</b>), outperforming complex synthetic interpolators like SMOTE without introducing artificial boundary noise."),
+        (i3, "🛡️", "Methodology Benchmark", "#818CF8", "rgba(129, 140, 248, 0.15)", "#A5B4FC",
+         "Strict Zero Data-Leakage Architecture",
+         "All preprocessing (median imputation of physiological zeros, standard scaling) and resampling execute strictly within <code>imblearn.pipeline.Pipeline</code> during <code>.fit()</code>, ensuring held-out test data is pristine."),
+    ]
+
+    for col, emoji_icon, badge_text, border_col, badge_bg, badge_fg, card_head, card_body in insights:
+        with col:
+            st.markdown(f"""
+            <div style="background: linear-gradient(180deg, #131B2E 0%, #0E1628 100%); border: 1px solid rgba(148, 163, 184, 0.16); border-top: 3px solid {border_col}; border-radius: 14px; padding: 22px; margin-bottom: 22px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); min-height: 210px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                    <span style="font-size: 1.25rem;">{emoji_icon}</span>
+                    <span style="background: {badge_bg}; color: {badge_fg}; font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 12px; text-transform: uppercase; letter-spacing: 0.04em;">{badge_text}</span>
+                </div>
+                <div style="color: #F8FAFC; font-size: 1.02rem; font-weight: 700; margin-bottom: 8px;">{card_head}</div>
+                <div style="font-size: 0.84rem; color: #94A3B8; line-height: 1.55;">{card_body}</div>
             </div>
-            <div class="insight-title">Random Under-Sampling Dominates Random Forest</div>
-            <p class="insight-text">
-                For Random Forest, <b>RandomUnder</b> was the overall top strategy across all cohort sizes, lifting Balanced Accuracy by <b>+6.49 pp</b> and doubling minority diabetic detection (Recall: 36.3% → <b>72.0%</b> at N=60, <i>p < 0.0001</i>).
-            </p>
-        </div>
-        <div class="insight-card teal">
-            <div class="insight-header">
-                <span style="font-size: 1.25rem;">⚖️</span>
-                <span class="insight-badge teal">Optimal Linear Strategy</span>
-            </div>
-            <div class="insight-title">Cost-Sensitive ClassWeight Leads Logistic Regression</div>
-            <p class="insight-text">
-                For Logistic Regression, algorithmic <b>ClassWeight</b> achieves the highest Balanced Accuracy at N=60 (<b>0.713 ± 0.035</b>), outperforming complex synthetic interpolators like SMOTE without introducing artificial boundary noise.
-            </p>
-        </div>
-        <div class="insight-card indigo">
-            <div class="insight-header">
-                <span style="font-size: 1.25rem;">🛡️</span>
-                <span class="insight-badge indigo">Methodology Benchmark</span>
-            </div>
-            <div class="insight-title">Strict Zero Data-Leakage Architecture</div>
-            <p class="insight-text">
-                All preprocessing (median imputation of physiological zeros, standard scaling) and resampling execute strictly within <code>imblearn.pipeline.Pipeline</code> during <code>.fit()</code>, ensuring held-out test data is pristine.
-            </p>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+            """, unsafe_allow_html=True)
 
     # Visual Impact Chart: Minority Recall Comparison at N=60
     summary_mean = load_summary_mean()
@@ -1561,6 +1497,7 @@ def render_downloads():
 # MAIN ROUTER
 # =========================================================================
 def main():
+    inject_custom_css()
     render_hero()
 
     st.sidebar.markdown('<div class="sidebar-brand"><h2>🩺 Pima Clinical AI</h2><p>Imbalance Benchmark v2.0</p></div>', unsafe_allow_html=True)
