@@ -217,29 +217,49 @@ st.markdown(r"""
     }
 
     /* Gateway Nav Cards */
+    .gateway-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin-bottom: 28px;
+    }
+    @media (max-width: 1024px) {
+        .gateway-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+        .gateway-grid { grid-template-columns: 1fr; }
+    }
     .gateway-card {
+        background: linear-gradient(180deg, #162238 0%, #101827 100%);
+        border: 1px solid rgba(148, 163, 184, 0.16);
         background: linear-gradient(180deg, #162238 0%, #0F172A 100%);
         border: 1px solid rgba(148, 163, 184, 0.18);
         border-radius: 14px;
         padding: 22px;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.22);
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        height: 100%;
         min-height: 185px;
         margin-bottom: 10px;
         transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     }
     .gateway-card:hover {
+        transform: translateY(-4px);
         transform: translateY(-3px);
         border-color: rgba(56, 189, 248, 0.5);
+        box-shadow: 0 8px 24px rgba(56, 189, 248, 0.15);
         box-shadow: 0 10px 28px rgba(56, 189, 248, 0.18);
     }
     .gateway-icon {
+        font-size: 2rem;
         font-size: 2.1rem;
         margin-bottom: 12px;
     }
     .gateway-title {
+        font-size: 1.1rem;
         font-size: 1.12rem;
         font-weight: 700;
         color: #F8FAFC;
@@ -247,9 +267,11 @@ st.markdown(r"""
         letter-spacing: -0.01em;
     }
     .gateway-desc {
+        font-size: 0.85rem;
         font-size: 0.86rem;
         color: #94A3B8;
         line-height: 1.5;
+        margin: 0 0 16px 0;
         margin: 0;
         flex-grow: 1;
     }
@@ -281,12 +303,24 @@ st.markdown(r"""
     /* Architecture Stepper Grid */
     .arch-grid {
         display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        margin-bottom: 24px;
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
         gap: 16px;
         margin-bottom: 28px;
     }
+    @media (max-width: 1024px) {
+        .arch-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+        .arch-grid { grid-template-columns: 1fr; }
+    }
     .arch-card {
         background: linear-gradient(180deg, #151F33 0%, #0E1626 100%);
+        border: 1px solid rgba(148, 163, 184, 0.14);
+        border-radius: 12px;
+        padding: 18px;
         border: 1px solid rgba(148, 163, 184, 0.16);
         border-radius: 14px;
         padding: 20px;
@@ -295,26 +329,37 @@ st.markdown(r"""
     }
     .arch-step-num {
         display: inline-block;
+        width: 26px;
+        height: 26px;
+        line-height: 26px;
         width: 28px;
         height: 28px;
         line-height: 28px;
         text-align: center;
+        background: rgba(56, 189, 248, 0.15);
         background: rgba(56, 189, 248, 0.18);
         color: #38BDF8;
+        border: 1px solid rgba(56, 189, 248, 0.3);
         border: 1px solid rgba(56, 189, 248, 0.35);
         border-radius: 50%;
+        font-size: 0.78rem;
         font-size: 0.8rem;
         font-weight: 800;
+        margin-bottom: 10px;
         margin-bottom: 12px;
     }
     .arch-step-title {
         color: #F8FAFC;
+        font-size: 0.95rem;
         font-size: 0.98rem;
         font-weight: 700;
+        margin: 0 0 6px 0;
         margin: 0 0 8px 0;
     }
     .arch-step-desc {
         color: #94A3B8;
+        font-size: 0.82rem;
+        line-height: 1.45;
         font-size: 0.84rem;
         line-height: 1.5;
         margin: 0;
@@ -323,15 +368,23 @@ st.markdown(r"""
     /* Key Insights Grid */
     .insight-grid {
         display: grid;
+        grid-template-columns: repeat(3, 1fr);
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 16px;
+        margin-bottom: 26px;
         margin-bottom: 28px;
     }
+    @media (max-width: 900px) {
+        .insight-grid { grid-template-columns: 1fr; }
+    }
     .insight-card {
+        background: linear-gradient(180deg, #162238 0%, #101827 100%);
+        border: 1px solid rgba(148, 163, 184, 0.14);
         background: linear-gradient(180deg, #162238 0%, #0F1728 100%);
         border: 1px solid rgba(148, 163, 184, 0.16);
         border-radius: 14px;
         padding: 22px;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
         position: relative;
         overflow: hidden;
@@ -351,14 +404,19 @@ st.markdown(r"""
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.05em;
+        padding: 3px 10px;
         padding: 4px 10px;
         border-radius: 12px;
     }
+    .insight-badge.teal { background: rgba(0, 173, 181, 0.18); color: #38BDF8; }
+    .insight-badge.emerald { background: rgba(16, 185, 129, 0.18); color: #34D399; }
+    .insight-badge.indigo { background: rgba(129, 140, 248, 0.18); color: #A5B4FC; }
     .insight-badge.teal { background: rgba(0, 173, 181, 0.18); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.3); }
     .insight-badge.emerald { background: rgba(16, 185, 129, 0.18); color: #34D399; border: 1px solid rgba(52, 211, 153, 0.3); }
     .insight-badge.indigo { background: rgba(129, 140, 248, 0.18); color: #A5B4FC; border: 1px solid rgba(165, 180, 252, 0.3); }
 
     .insight-title {
+        font-size: 1.08rem;
         font-size: 1.1rem;
         font-weight: 700;
         color: #F8FAFC;
@@ -374,11 +432,24 @@ st.markdown(r"""
     /* Custom KPI Cards */
     .kpi-grid {
         display: grid;
+        grid-template-columns: repeat(6, 1fr);
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
         gap: 14px;
+        margin-bottom: 26px;
         margin-bottom: 28px;
     }
+    @media (max-width: 1024px) {
+        .kpi-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 640px) {
+        .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     .kpi-card {
+        background: linear-gradient(180deg, #162238 0%, #101827 100%);
+        border: 1px solid rgba(148, 163, 184, 0.15);
+        border-radius: 12px;
+        padding: 16px 18px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         background: linear-gradient(180deg, #162238 0%, #0F172A 100%);
         border: 1px solid rgba(148, 163, 184, 0.16);
         border-radius: 14px;
@@ -409,18 +480,22 @@ st.markdown(r"""
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.05em;
+        margin-bottom: 6px;
         margin-bottom: 8px;
     }
     .kpi-val {
+        font-size: 1.75rem;
         font-size: 1.85rem;
         font-weight: 800;
         color: #F8FAFC;
+        letter-spacing: -0.02em;
         letter-spacing: -0.025em;
         line-height: 1.1;
     }
     .kpi-sub {
         font-size: 0.8rem;
         color: #64748B;
+        margin-top: 4px;
         margin-top: 5px;
         font-weight: 500;
     }
@@ -433,10 +508,14 @@ st.markdown(r"""
         box-shadow: 0 8px 24px rgba(0,0,0,0.3);
     }
     .risk-card.high {
+        background: linear-gradient(135deg, rgba(244, 63, 94, 0.15) 0%, rgba(15, 23, 42, 0.9) 100%);
+        border: 1px solid rgba(244, 63, 94, 0.4);
         background: linear-gradient(135deg, rgba(244, 63, 94, 0.18) 0%, rgba(15, 23, 42, 0.95) 100%);
         border: 1px solid rgba(244, 63, 94, 0.45);
     }
     .risk-card.low {
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(15, 23, 42, 0.9) 100%);
+        border: 1px solid rgba(16, 185, 129, 0.4);
         background: linear-gradient(135deg, rgba(16, 185, 129, 0.18) 0%, rgba(15, 23, 42, 0.95) 100%);
         border: 1px solid rgba(16, 185, 129, 0.45);
     }
@@ -466,6 +545,7 @@ st.markdown(r"""
         background: rgba(30, 41, 59, 0.7);
         border: 1px solid rgba(148, 163, 184, 0.18);
         border-left: 4px solid #F59E0B;
+        border-radius: 8px;
         border-radius: 10px;
         padding: 14px 18px;
         color: #CBD5E1;
@@ -476,15 +556,20 @@ st.markdown(r"""
 
     /* Sidebar polish */
     [data-testid="stSidebar"] {
+        background-color: #0B0F19;
+        border-right: 1px solid rgba(148, 163, 184, 0.1);
         background-color: #0B101E !important;
         border-right: 1px solid rgba(148, 163, 184, 0.12) !important;
     }
     .sidebar-brand {
         padding: 10px 0 20px 0;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        margin-bottom: 16px;
         border-bottom: 1px solid rgba(148, 163, 184, 0.12);
         margin-bottom: 18px;
     }
     .sidebar-brand h2 {
+        font-size: 1.25rem;
         font-size: 1.3rem;
         font-weight: 800;
         color: #F8FAFC;
@@ -492,11 +577,15 @@ st.markdown(r"""
         letter-spacing: -0.02em;
     }
     .sidebar-brand p {
+        font-size: 0.78rem;
         font-size: 0.8rem;
         color: #64748B;
         margin: 4px 0 0 0;
     }
 
+    /* Dataframe formatting */
+    [data-testid="stDataFrame"] {
+        border-radius: 10px;
     /* Inputs, Selectboxes, Radios */
     div[data-baseweb="select"] > div {
         background-color: #151F33 !important;
@@ -543,6 +632,7 @@ st.markdown(r"""
         background-color: #131B2E !important;
         border-radius: 12px !important;
         overflow: hidden;
+        border: 1px solid rgba(148, 163, 184, 0.15);
         border: 1px solid rgba(148, 163, 184, 0.16) !important;
     }
 </style>
@@ -677,18 +767,19 @@ def render_hero():
     <div class="hero-container">
         <div class="hero-badge-row">
             <span class="hero-badge"><span class="pulse-dot"></span> Clinical AI Benchmark</span>
-            <span class="hero-badge" style="background: rgba(16, 185, 129, 0.15); color: #34D399; border-color: rgba(16, 185, 129, 0.3);">Leakage-Free Imblearn Pipeline</span>
-            <span class="hero-badge" style="background: rgba(129, 140, 248, 0.15); color: #A5B4FC; border-color: rgba(129, 140, 248, 0.3);">20× Monte Carlo Validated</span>
+            <span class="hero-badge" style="background: rgba(16, 185, 129, 0.15); color: #34D399; border-color: rgba(16, 185, 129, 0.3);">Leakage-Free Pipeline</span>
+            <span class="hero-badge" style="background: rgba(129, 140, 248, 0.15); color: #A5B4FC; border-color: rgba(129, 140, 248, 0.3);">20× Monte Carlo</span>
+            <span class="hero-badge" style="background: rgba(244, 63, 94, 0.12); color: #FDA4AF; border-color: rgba(244, 63, 94, 0.3);">6 Resampling Strategies</span>
         </div>
-        <h1 class="hero-title">Imbalance-Handling Strategies on Small Medical Data</h1>
+        <h1 class="hero-title">Imbalance-Handling Strategies<br>on Small Imbalanced Medical Data</h1>
         <p class="hero-subtitle">
-            A comprehensive empirical study evaluating algorithmic cost-weighting and synthetic resampling techniques under acute sample scarcity ($N \in \{60, 120, 250, 537\}$) on the Pima Indians Diabetes Diagnostic Cohort.
+            A comprehensive empirical benchmark evaluating algorithmic cost-weighting and synthetic resampling under acute sample scarcity (N = 60 to 537) on the <b style="color:#E2E8F0;">Pima Indians Diabetes</b> diagnostic cohort with rigorous zero data-leakage methodology.
         </p>
         <div class="hero-meta-row">
             <span class="hero-meta-item">📁 <b>Cohort:</b> UCI / NIDDK (768 Patients)</span>
             <span class="hero-meta-item">🧬 <b>Features:</b> 8 Physiological Biomarkers</span>
             <span class="hero-meta-item">⚖️ <b>Class Ratio:</b> 1 : 1.87 (34.9% Diabetic)</span>
-            <span class="hero-meta-item">🔬 <b>Pipeline:</b> Median Impute + Scaler + Resampler</span>
+            <span class="hero-meta-item">🔬 <b>Pipeline:</b> Impute → Scale → Resample → Classify</span>
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -875,6 +966,47 @@ def render_overview():
     </div>
     """, unsafe_allow_html=True)
 
+    # Visual Impact Chart: Minority Recall Comparison at N=60
+    summary_mean = load_summary_mean()
+    if summary_mean is not None:
+        st.markdown('<div class="glass-card"><div class="card-title">📊 Minority Recall Impact at Smallest Cohort (N = 60)</div>', unsafe_allow_html=True)
+        st.markdown("<p style='color:#94A3B8; font-size:0.86rem; margin-top:-10px; margin-bottom:14px;'>How each resampling strategy affects diabetic patient detection rate at extreme sample scarcity.</p>", unsafe_allow_html=True)
+
+        c_rf_chart, c_lr_chart = st.columns(2, gap="medium")
+
+        for col_slot, model_name, model_label in [(c_rf_chart, "RandomForest", "🌲 Random Forest"), (c_lr_chart, "LogReg", "📈 Logistic Regression")]:
+            with col_slot:
+                sub = summary_mean[(summary_mean["model"] == model_name) & (summary_mean["train_size"] == 60)].copy()
+                sub = sub.set_index("method").reindex(METHODS_ORDER).reset_index()
+                fig_recall = go.Figure()
+                for _, row in sub.iterrows():
+                    meth = row["method"]
+                    val = row["MinorityRecall"]
+                    is_best = val == sub["MinorityRecall"].max()
+                    fig_recall.add_trace(go.Bar(
+                        x=[meth], y=[val],
+                        marker_color=METHOD_COLORS.get(meth, "#38BDF8"),
+                        marker_line_width=2 if is_best else 0,
+                        marker_line_color="#FFFFFF" if is_best else "rgba(0,0,0,0)",
+                        text=f"{val:.1%}",
+                        textposition="outside",
+                        textfont=dict(size=11, color="#F8FAFC"),
+                        hovertemplate=f"<b>{meth}</b><br>Minority Recall: {val:.3f}<extra></extra>",
+                        showlegend=False,
+                    ))
+                fig_recall.update_layout(
+                    title=dict(text=model_label, font=dict(size=14, color="#F8FAFC"), x=0.5),
+                    yaxis_title="Minority Recall",
+                    yaxis=dict(range=[0, min(1.0, sub["MinorityRecall"].max() + 0.12)]),
+                    xaxis_title="",
+                    height=320,
+                    showlegend=False,
+                )
+                style_plotly(fig_recall)
+                st.plotly_chart(fig_recall, use_container_width=True)
+
+        st.markdown('</div>', unsafe_allow_html=True)
+
     # Champion Benchmark Table Direct on Landing Page
     best_df = load_best_methods()
     if best_df is not None:
@@ -927,7 +1059,7 @@ def render_overview():
             """
 
         with c_rf:
-            st.markdown("<div style='font-size:0.98rem; font-weight:700; color:#34D399; margin-bottom:10px;'>🌲 Random Forest (Ensemble)</div>", unsafe_allow_html=True)
+            st.markdown("<div style='font-size:0.96rem; font-weight:700; color:#34D399; margin-bottom:10px;'>🌲 Random Forest (Ensemble)</div>", unsafe_allow_html=True)
             rf_champs = best_df[best_df["model"] == "RandomForest"][["train_size", "method", "BA", "MinorityRecall"]].copy()
             rf_champs.columns = ["Cohort Size (N)", "Champion Strategy", "Balanced Accuracy", "Minority Recall"]
             rf_champs["Cohort Size (N)"] = rf_champs["Cohort Size (N)"].apply(lambda s: f"N = {s}" if s != 537 else "Full (N = 537)")
@@ -936,7 +1068,7 @@ def render_overview():
             st.markdown(build_champs_table(rf_champs, "#34D399"), unsafe_allow_html=True)
             
         with c_lr:
-            st.markdown("<div style='font-size:0.98rem; font-weight:700; color:#38BDF8; margin-bottom:10px;'>📈 Logistic Regression (Linear)</div>", unsafe_allow_html=True)
+            st.markdown("<div style='font-size:0.96rem; font-weight:700; color:#38BDF8; margin-bottom:10px;'>📈 Logistic Regression (Linear)</div>", unsafe_allow_html=True)
             lr_champs = best_df[best_df["model"] == "LogReg"][["train_size", "method", "BA", "MinorityRecall"]].copy()
             lr_champs.columns = ["Cohort Size (N)", "Champion Strategy", "Balanced Accuracy", "Minority Recall"]
             lr_champs["Cohort Size (N)"] = lr_champs["Cohort Size (N)"].apply(lambda s: f"N = {s}" if s != 537 else "Full (N = 537)")
@@ -985,33 +1117,35 @@ def render_overview():
     with col_desc:
         st.markdown('<div class="glass-card"><div class="card-title">🔬 Clinical Covariates & Missingness Pipeline</div>', unsafe_allow_html=True)
         covariates_info = [
-            ("Glucose", "Continuous", "70 - 99 mg/dL", "Zeros treated as NaN → Median imputed"),
-            ("BloodPressure", "Continuous", "60 - 80 mm Hg", "Zeros treated as NaN → Median imputed"),
-            ("SkinThickness", "Continuous", "10 - 30 mm", "Zeros treated as NaN → Median imputed"),
-            ("Insulin", "Continuous", "16 - 166 mu U/ml", "Zeros treated as NaN → Median imputed"),
-            ("BMI", "Continuous", "18.5 - 24.9 kg/m²", "Zeros treated as NaN → Median imputed"),
-            ("Pregnancies", "Discrete", "0 - 17 count", "Valid biological zero preserved"),
-            ("Age", "Discrete", "21 - 81 years", "Valid chronological zero preserved"),
-            ("DiabetesPedigree", "Continuous", "0.08 - 2.42 score", "Valid genetic risk metric"),
+            ("Glucose", "Continuous", "70 - 99 mg/dL", "Zeros → NaN → Median imputed"),
+            ("BloodPressure", "Continuous", "60 - 80 mm Hg", "Zeros → NaN → Median imputed"),
+            ("SkinThickness", "Continuous", "10 - 30 mm", "Zeros → NaN → Median imputed"),
+            ("Insulin", "Continuous", "16 - 166 mu U/ml", "Zeros → NaN → Median imputed"),
+            ("BMI", "Continuous", "18.5 - 24.9 kg/m²", "Zeros → NaN → Median imputed"),
+            ("Pregnancies", "Discrete", "0 - 17 count", "Valid biological zero"),
+            ("Age", "Discrete", "21 - 81 years", "Valid chronological zero"),
+            ("DiabetesPedigree", "Continuous", "0.08 - 2.42", "Valid genetic risk metric"),
         ]
         cov_rows_html = ""
         for bio, typ, norm, miss in covariates_info:
+            is_imputed = "imputed" in miss
+            miss_color = "#FBBF24" if is_imputed else "#34D399"
             cov_rows_html += f"""
-            <tr style="border-bottom: 1px solid rgba(148, 163, 184, 0.1);">
-                <td style="padding: 7px 10px; font-weight: 700; color: #F8FAFC; font-size: 0.84rem;">{bio}</td>
-                <td style="padding: 7px 10px; color: #94A3B8; font-size: 0.8rem;">{typ}</td>
-                <td style="padding: 7px 10px; color: #38BDF8; font-family:'JetBrains Mono',monospace; font-size: 0.8rem;">{norm}</td>
-                <td style="padding: 7px 10px; color: #CBD5E1; font-size: 0.8rem;">{miss}</td>
+            <tr style="border-bottom: 1px solid rgba(148, 163, 184, 0.08);">
+                <td style="padding: 8px 12px; font-weight: 700; color: #F8FAFC; font-size: 0.84rem;">{bio}</td>
+                <td style="padding: 8px 10px; color: #94A3B8; font-size: 0.8rem;">{typ}</td>
+                <td style="padding: 8px 10px; color: #38BDF8; font-family:'JetBrains Mono',monospace; font-size: 0.8rem;">{norm}</td>
+                <td style="padding: 8px 10px; color: {miss_color}; font-size: 0.8rem;">{miss}</td>
             </tr>
             """
         cov_table_html = f"""
         <table style="width:100%; border-collapse:collapse; background:rgba(15, 23, 42, 0.5); border-radius:10px; overflow:hidden; border: 1px solid rgba(148, 163, 184, 0.12);">
             <thead>
                 <tr style="background:rgba(30, 41, 59, 0.7); color:#94A3B8; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em; text-align:left;">
-                    <th style="padding:8px 10px;">Biomarker</th>
-                    <th style="padding:8px 10px;">Type</th>
-                    <th style="padding:8px 10px;">Clinical Normal</th>
-                    <th style="padding:8px 10px;">Missingness Treatment</th>
+                    <th style="padding:9px 12px;">Biomarker</th>
+                    <th style="padding:9px 10px;">Type</th>
+                    <th style="padding:9px 10px;">Clinical Normal</th>
+                    <th style="padding:9px 10px;">Treatment</th>
                 </tr>
             </thead>
             <tbody>
